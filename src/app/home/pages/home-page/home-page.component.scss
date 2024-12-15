@@ -2,7 +2,7 @@
   margin-top: 165px;
 
   @media screen and (max-width: 768px) {
-      margin-top: 100px;
+    margin-top: 100px;
   }
 }
 .landing-title {
@@ -10,13 +10,13 @@
   margin: 0 0 1.5rem;
   @media screen and (max-width: 768px) {
     &::after {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    right: calc(50% - 24px);
-    width: 48px;
-    height: 2px;
-    background-color: #1e2748;
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      right: calc(50% - 24px);
+      width: 48px;
+      height: 2px;
+      background-color: #1e2748;
     }
   }
 }
@@ -68,11 +68,5 @@
     &__title {
       font-size: 20px;
     }
-  }
-}
-.copyright {
-  padding: 34px 0;
-  img {
-    width: 32px;
   }
 }

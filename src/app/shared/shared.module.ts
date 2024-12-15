@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { AppFooterComponent } from './components';
 
 @NgModule({
-  declarations: [],
+  declarations: [AppFooterComponent],
   imports: [],
-  exports: [],
+  exports: [AppFooterComponent],
   providers: [],
 })
 export class SharedModule {}

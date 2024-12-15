@@ -1,5 +1,5 @@
 .survey-page__wrapper {
-  min-height: 100dvh;
+  min-height: calc(100dvh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
