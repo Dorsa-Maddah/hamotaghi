@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-survey-item',
+  selector: 'survey-item',
   templateUrl: './survey-item.component.html',
-  styleUrls: ['./survey-item.component.css']
+  styleUrls: ['./survey-item.component.css'],
 })
-export class SurveyItemComponent implements OnInit {
+export class SurveyItemComponent {
+  public selectedIndex = -1;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  selectItem(index: number) {
+    this.selectedIndex = index;
   }
-
 }
