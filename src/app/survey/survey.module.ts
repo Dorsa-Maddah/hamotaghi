@@ -1,7 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { SurveyItemComponent, SurveyListComponent } from './components';
+import {
+  SurveyItemComponent,
+  SurveyListComponent,
+  SurveyRoomComponent,
+  SurveyRoommateComponent,
+  SurveyRoomsListComponent,
+} from './components';
 import {
   SurveyPageComponent,
   SurveyQuestionsPageComponent,
@@ -16,6 +22,9 @@ import { SurveyRoutingModule } from './survey-routing.module';
     SurveyListComponent,
     SurveyItemComponent,
     SurveyRoomsPageComponent,
+    SurveyRoomsListComponent,
+    SurveyRoomComponent,
+    SurveyRoommateComponent,
   ],
   imports: [CommonModule, SurveyRoutingModule, SharedModule],
   exports: [],
