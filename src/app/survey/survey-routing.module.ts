@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {
-  SurveyPageComponent,
-  SurveyQuestionsPageComponent,
-  SurveyRoomsPageComponent,
-} from './pages';
+import { SurveyPageComponent, SurveyQuestionsPageComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -19,10 +15,6 @@ const routes: Routes = [
   {
     path: 'questions',
     component: SurveyQuestionsPageComponent,
-  },
-  {
-    path: 'rooms',
-    component: SurveyRoomsPageComponent,
   },
 ];
 

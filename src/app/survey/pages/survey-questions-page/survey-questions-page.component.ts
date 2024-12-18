@@ -10,6 +10,6 @@ export class SurveyQuestionsPageComponent {
   constructor(private readonly _router: Router) {}
 
   handleSubmit(): void {
-    this._router.navigateByUrl('/profile/survey/rooms');
+    this._router.navigateByUrl('/profile/room/suggested');
   }
 }

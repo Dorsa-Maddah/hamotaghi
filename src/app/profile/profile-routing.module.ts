@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoomGuard } from './guards';
-import { CurrentRoomPageComponent } from './pages';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'current-room',
+    redirectTo: 'room',
   },
-  // has room
   {
-    path: 'current-room',
-    component: CurrentRoomPageComponent,
-    canActivate: [RoomGuard],
+    path: 'room',
+    loadChildren: () => import('../room/room.module').then((m) => m.RoomModule),
   },
-  // has no room yet
   {
     path: 'survey',
     loadChildren: () =>
