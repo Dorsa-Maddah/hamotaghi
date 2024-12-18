@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-survey-questions-page',
+  selector: 'survey-questions-page',
   templateUrl: './survey-questions-page.component.html',
-  styleUrls: ['./survey-questions-page.component.css']
+  styleUrls: ['./survey-questions-page.component.css'],
 })
-export class SurveyQuestionsPageComponent implements OnInit {
+export class SurveyQuestionsPageComponent {
+  constructor(private readonly _router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  handleSubmit(): void {
+    this._router.navigateByUrl('/profile/room/suggested');
   }
-
 }

@@ -17,9 +17,9 @@ const routes: Routes = [
           import('./home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'survey',
+        path: 'profile',
         loadChildren: () =>
-          import('./survey/survey.module').then((m) => m.SurveyModule),
+          import('./profile/profile.module').then((m) => m.ProfileModule),
       },
     ],
   },

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SurveyPageComponent, SurveyQuestionsPageComponent } from './pages';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'start',
+    redirectTo: 'room',
   },
   {
-    path: 'start',
-    component: SurveyPageComponent,
+    path: 'room',
+    loadChildren: () => import('../room/room.module').then((m) => m.RoomModule),
   },
   {
-    path: 'questions',
-    component: SurveyQuestionsPageComponent,
+    path: 'survey',
+    loadChildren: () =>
+      import('../survey/survey.module').then((m) => m.SurveyModule),
   },
 ];
 
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SurveyRoutingModule {}
+export class ProfileRoutingModule {}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SurveyRoommateComponent } from './survey-roommate.component';
+import { CurrentRoomPageComponent } from './current-room-page.component';
 
-describe('SurveyRoommateComponent', () => {
-  let component: SurveyRoommateComponent;
-  let fixture: ComponentFixture<SurveyRoommateComponent>;
+describe('CurrentRoomPageComponent', () => {
+  let component: CurrentRoomPageComponent;
+  let fixture: ComponentFixture<CurrentRoomPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SurveyRoommateComponent ]
+      declarations: [ CurrentRoomPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SurveyRoommateComponent);
+    fixture = TestBed.createComponent(CurrentRoomPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
