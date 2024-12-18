@@ -21,11 +21,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./profile/profile.module').then((m) => m.ProfileModule),
       },
-      {
-        path: 'survey',
-        loadChildren: () =>
-          import('./survey/survey.module').then((m) => m.SurveyModule),
-      },
     ],
   },
 ];

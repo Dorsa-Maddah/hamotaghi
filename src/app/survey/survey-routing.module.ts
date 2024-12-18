@@ -9,6 +9,11 @@ import {
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'start',
+  },
+  {
+    path: 'start',
     component: SurveyPageComponent,
   },
   {
