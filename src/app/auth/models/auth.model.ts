@@ -5,7 +5,7 @@ export namespace Auth {
   }
 
   export interface LoginResponse {
-    accessToken: string;
-    refreshToken: string;
+    access: string;
+    refresh: string;
   }
 }

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { AuthRESTService } from '../../api/auth.rest.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../api/auth.service';
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css'],
 })
-export class LoginComponent {
+export class LoginPageComponent {
   public readonly formGroup: FormGroup;
 
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _restService: AuthRESTService
+    private readonly _authService: AuthService
   ) {
     this.formGroup = this._fb.group({
       email: ['', [Validators.required]],
@@ -21,6 +21,6 @@ export class LoginComponent {
   }
 
   public handleLogin(): void {
-    this._restService.login(this.formGroup.value).subscribe();
+    this._authService.login(this.formGroup.value);
   }
 }
