@@ -42,3 +42,18 @@ body {
   background-color: var(--primary-highlight);
   border-color: var(--primary-color);
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
