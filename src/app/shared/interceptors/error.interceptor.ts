@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private toastr: ToastrService) {}
+  constructor(private readonly _toastrService: ToastrService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -30,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           errorMessage = `خطا: ${Object.keys(error.error).join(', ')}`;
         }
 
-        this.toastr.error(errorMessage);
+        this._toastrService.error(errorMessage);
         return throwError(errorMessage);
       })
     );

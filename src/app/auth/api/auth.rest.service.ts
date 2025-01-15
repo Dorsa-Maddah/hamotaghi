@@ -14,4 +14,12 @@ export class AuthRESTService extends AbstractRESTService {
       headers: this.setHeaders(),
     });
   }
+
+  public register(dto: Auth.RegisterDto): Observable<Auth.RegisterResponse> {
+    const _url = `${this._serverUrl}/accounts/register/`;
+
+    return this._http.post<Auth.RegisterResponse>(_url, dto, {
+      headers: this.setHeaders(),
+    });
+  }
 }
