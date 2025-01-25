@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Survey } from '../../models';
 
 @Component({
   selector: 'survey-item',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./survey-item.component.css'],
 })
 export class SurveyItemComponent {
+  @Input() data: Survey.Question | null = null;
   public selectedIndex = -1;
 
   selectItem(index: number) {
