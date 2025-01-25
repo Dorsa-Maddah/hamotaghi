@@ -1,0 +1,17 @@
+<ng-container *ngIf="data">
+  <strong class="survey__question">
+    <b>{{ data.id }}.</b>
+    <span>{{ data.text }}</span>
+  </strong>
+
+  <ul class="survey__items">
+    <li
+      class="survey__item"
+      *ngFor="let item of data.choices; let i = index"
+      (click)="selectItem(i)"
+    >
+      <i [class.active]="selectedIndex === i"></i>
+      <span>{{ item.text }}</span>
+    </li>
+  </ul>
+</ng-container>

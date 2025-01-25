@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 70px;
+  border-radius: 28px;
+  border: 1px solid var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+  :host {
+    padding: 40px;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :host {
+    padding: 30px;
+    border-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :host {
+    padding: 20px;
+    border-radius: 10px;
+  }
+}

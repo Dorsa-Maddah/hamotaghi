@@ -1,0 +1,60 @@
+# Dependencies
+node_modules
+**/node_modules
+npm-debug.log
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE
+docs
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode
+.idea
+*.sublime-*
+*.swp
+*.swo
+
+# Testing
+coverage
+**/coverage
+test-results
+**/test-results
+
+# Environment
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Build
+dist
+**/dist
+
+# Nx specific
+nx-cache
+.nx
+.nx-cache
+.nxignore
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Angular specific
+.angular

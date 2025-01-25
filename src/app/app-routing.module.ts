@@ -1,25 +1,40 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import {HomePageComponent} from './pages/home-page/home-page.component'
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/guards';
+import { AppLayoutComponent } from './shared/layouts';
 
 const routes: Routes = [
   {
-    path: 'login',
-    loadChildren: () => import('./components/logging.module').then(m => m.LoggingModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '',
-    component: HomePageComponent,
-  }
+    component: AppLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
+      },
+      {
+        path: 'profile',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled',
-    preloadingStrategy: PreloadAllModules,
-    scrollPositionRestoration: 'enabled'
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled',
+      preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
