@@ -11,6 +11,6 @@ export class SurveyItemComponent {
   public selectedIndex = -1;
 
   selectItem(index: number) {
-    this.selectedIndex = index;
+    this.selectedIndex = this.selectedIndex === index ? -1 : index;
   }
 }

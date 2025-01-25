@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { SurveyRESTService } from './survey.rest.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Survey } from '../models';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,15 @@ export class SurveyService {
         this.questions$.next(response);
       },
     });
+  }
+
+  public resolveQuestions(): Observable<Survey.Question[]> {
+    return this._restService.getQuestions().pipe(
+      tap({
+        next: (response) => {
+          this.questions$.next(response);
+        },
+      })
+    );
   }
 }
