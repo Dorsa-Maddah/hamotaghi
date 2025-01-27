@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Survey } from '../../models';
+import { SurveyService } from '../../api';
 
 @Component({
   selector: 'survey-item',
@@ -8,9 +9,16 @@ import { Survey } from '../../models';
 })
 export class SurveyItemComponent {
   @Input() data: Survey.Question | null = null;
-  public selectedIndex = -1;
 
-  selectItem(index: number) {
-    this.selectedIndex = this.selectedIndex === index ? -1 : index;
+  public selectedChoiceId = -1;
+
+  constructor(private readonly _surveyService: SurveyService) {}
+
+  selectItem(id: number) {
+    this.selectedChoiceId = this.selectedChoiceId === id ? -1 : id;
+    this._surveyService.handleChoiceSelected(
+      this.data.id,
+      this.selectedChoiceId
+    );
   }
 }

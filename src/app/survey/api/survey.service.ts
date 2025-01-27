@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { sortSurvey } from '../helpers';
 import { Survey } from '../models';
 import { SurveyRESTService } from './survey.rest.service';
@@ -10,6 +10,18 @@ import { SurveyRESTService } from './survey.rest.service';
 })
 export class SurveyService {
   public readonly questions$ = new BehaviorSubject<Survey.Question[]>([]);
+  public readonly submissionDto$ =
+    new BehaviorSubject<Survey.SurveySubmissionDto>({});
+  public readonly areAllQuestionsAnswered$ = combineLatest([
+    this.questions$,
+    this.submissionDto$,
+  ]).pipe(
+    map(([questions, submissionDto]) => {
+      return questions.every((question) => {
+        return submissionDto[question?.id?.toString()] !== undefined;
+      });
+    })
+  );
 
   constructor(private readonly _restService: SurveyRESTService) {}
 
@@ -29,5 +41,13 @@ export class SurveyService {
         },
       })
     );
+  }
+
+  public handleChoiceSelected(questionId: number, choiceId: number) {
+    const _submissionDto = this.submissionDto$.getValue();
+
+    _submissionDto[questionId.toString()] = choiceId > 0 ? choiceId : undefined;
+
+    this.submissionDto$.next(_submissionDto);
   }
 }

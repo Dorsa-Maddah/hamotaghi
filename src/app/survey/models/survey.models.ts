@@ -9,4 +9,8 @@ export namespace Survey {
     text: string;
     choices: Choice[];
   }
+
+  export interface SurveySubmissionDto {
+    [key: string]: number;
+  }
 }
