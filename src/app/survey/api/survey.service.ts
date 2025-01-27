@@ -33,13 +33,6 @@ export class SurveyService {
 
   public storeSurvey(questions: Survey.Question[]): void {
     this.questions$.next(sortSurvey(questions));
-
-    // temp
-    const _temp: Survey.SurveySubmissionDto = {};
-    questions.forEach((question) => {
-      _temp[question.id.toString()] = question.choices[0].id;
-    });
-    this.submissionDto$.next(_temp);
   }
 
   public getQuestions(): void {
