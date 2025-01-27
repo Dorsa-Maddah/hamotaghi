@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { SurveyRESTService } from './survey.rest.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Survey } from '../models';
 import { tap } from 'rxjs/operators';
+import { sortSurvey } from '../helpers';
+import { Survey } from '../models';
+import { SurveyRESTService } from './survey.rest.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class SurveyService {
     return this._restService.getQuestions().pipe(
       tap({
         next: (response) => {
-          this.questions$.next(response);
+          this.questions$.next(sortSurvey(response));
         },
       })
     );
