@@ -14,4 +14,19 @@ export class SurveyRESTService extends AbstractRESTService {
       headers: this.setAuthorizedHeaders(),
     });
   }
+
+  public submitChoices(
+    userId: number,
+    data: Survey.SurveySubmissionDto
+  ): Observable<any> {
+    const _url = `${this._serverUrl}/personality/personality-tests/`;
+    const _dto = {
+      user: userId,
+      answers: data,
+    };
+
+    return this._http.post<any>(_url, _dto, {
+      headers: this.setAuthorizedHeaders(),
+    });
+  }
 }

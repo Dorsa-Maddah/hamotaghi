@@ -19,6 +19,6 @@ export class SurveyQuestionsPageComponent {
   }
 
   handleSubmit(): void {
-    this._router.navigateByUrl('/profile/room/suggested');
+    this._surveyService.submitChoices();
   }
 }

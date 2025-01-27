@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { UserService } from 'src/app/profile/api';
 import { sortSurvey } from '../helpers';
 import { Survey } from '../models';
 import { SurveyRESTService } from './survey.rest.service';
@@ -23,12 +25,27 @@ export class SurveyService {
     })
   );
 
-  constructor(private readonly _restService: SurveyRESTService) {}
+  constructor(
+    private readonly _restService: SurveyRESTService,
+    private readonly _userService: UserService,
+    private readonly _router: Router
+  ) {}
+
+  public storeSurvey(questions: Survey.Question[]): void {
+    this.questions$.next(sortSurvey(questions));
+
+    // temp
+    const _temp: Survey.SurveySubmissionDto = {};
+    questions.forEach((question) => {
+      _temp[question.id.toString()] = question.choices[0].id;
+    });
+    this.submissionDto$.next(_temp);
+  }
 
   public getQuestions(): void {
     this._restService.getQuestions().subscribe({
       next: (response) => {
-        this.questions$.next(response);
+        this.storeSurvey(response);
       },
     });
   }
@@ -37,7 +54,7 @@ export class SurveyService {
     return this._restService.getQuestions().pipe(
       tap({
         next: (response) => {
-          this.questions$.next(sortSurvey(response));
+          this.storeSurvey(response);
         },
       })
     );
@@ -49,5 +66,21 @@ export class SurveyService {
     _submissionDto[questionId.toString()] = choiceId > 0 ? choiceId : undefined;
 
     this.submissionDto$.next(_submissionDto);
+  }
+
+  public submitChoices(): void {
+    const _userId = this._userService.currentUser$.getValue()?.id;
+    if (!_userId) {
+      return;
+    }
+
+    this._restService
+      .submitChoices(_userId, this.submissionDto$.getValue())
+      .subscribe(() => {
+        setTimeout(
+          () => this._router.navigateByUrl('/profile/room/suggested'),
+          1
+        );
+      });
   }
 }
