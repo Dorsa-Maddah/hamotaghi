@@ -7,10 +7,10 @@
   <ul class="survey__items">
     <li
       class="survey__item"
-      *ngFor="let item of data.choices; let i = index"
-      (click)="selectItem(i)"
+      *ngFor="let item of data.choices"
+      (click)="selectItem(item.id)"
     >
-      <i [class.active]="selectedIndex === i"></i>
+      <i [class.active]="selectedChoiceId === item.id"></i>
       <span>{{ item.text }}</span>
     </li>
   </ul>
