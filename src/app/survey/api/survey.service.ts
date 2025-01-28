@@ -76,4 +76,8 @@ export class SurveyService {
         );
       });
   }
+
+  public checkSurvey(): Observable<Survey.StatusCheckResponse> {
+    return this._restService.checkSurvey();
+  }
 }
