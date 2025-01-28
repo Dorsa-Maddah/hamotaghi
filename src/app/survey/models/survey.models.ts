@@ -13,4 +13,8 @@ export namespace Survey {
   export interface SurveySubmissionDto {
     [key: string]: number;
   }
+
+  export interface StatusCheckResponse {
+    completed: boolean;
+  }
 }

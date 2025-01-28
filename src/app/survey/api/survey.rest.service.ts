@@ -29,4 +29,12 @@ export class SurveyRESTService extends AbstractRESTService {
       headers: this.setAuthorizedHeaders(),
     });
   }
+
+  public checkSurvey(): Observable<Survey.StatusCheckResponse> {
+    const _url = `${this._serverUrl}/personality/check-test/`;
+
+    return this._http.get<Survey.StatusCheckResponse>(_url, {
+      headers: this.setAuthorizedHeaders(),
+    });
+  }
 }
